@@ -12,15 +12,14 @@ class App extends React.Component{
     super(props);
     this.state = {
       count: 0,
+      headers: null,
       results: [],
-      loading: false,
     };
   }
 
-
   // Every time a change occurs in our input, we call handleForm to output our data in the desired way.
-  handleForm = (count, results) => {
-    this.setState({ count, results });
+  handleForm = (headers, count, results) => {
+    this.setState({count, results, headers });
   };
 
   // We are returning these results in our desired format, and rendering them to the app.
@@ -29,8 +28,7 @@ class App extends React.Component{
       <>
       <Header />
       <Form prompt="Enter API URL"  handler={this.handleForm} />
-      <Results count={this.state.count}results={this.state.results}  />
-
+      <Results count={this.state.count} results={this.state.results} headers={this.state.headers}/>
       <Footer />
       </>
     )

@@ -17,6 +17,11 @@ class Form extends React.Component {
     this.setState({url: userInput});
   }
 
+  // Make the onClick method more DRY
+  handleClick = event => {
+    let method = event.target.value;
+    this.setState({ method });
+  }
   // Asynchronous Fetching of Data
   handleSubmit = async event => {
     event.preventDefault();
@@ -25,29 +30,30 @@ class Form extends React.Component {
 // Fetch: Go to this URL and GET from it
     let raw = await fetch(this.state.url);
     let data = await raw.json();
+    console.log('data', data);
 // Cool, got the data!
 
+  //grab the content-type headers
+  let headers = await raw.headers.get('content-type');
 // Keep track of count
     let count = data.count;
 
 //Format the results
-    let apiResults = data.result;
+    let results = data.results;
 
-    this.props.handler(count, apiResults);
+    this.props.handler(headers, count, results);
   };
 
-
- 
-
+  // CLEAN UP FORM
   render() {
     return(
       <form className="App-form" onSubmit={this.handleSubmit}>
         <input type="text" id="urlText" onChange={this.handleChange}/>
         <button>{this.props.prompt}</button>
-        <input className="button" type="button" value="GET" onClick={() => this.setState({method: "GET",})}/>
-        <input className="button" type="button" value="POST" onClick={() => this.setState({method: "POST",})}/>
-        <input className="button" type="button" value="PUT" onClick={() => this.setState({method: "PUT",})}/>
-        <input className="button" type="button" value="DELETE" onClick={() => this.setState({method: "DELETE",})}/>
+        <input className="button" type="button" value="GET" onClick={this.handleClick}/>
+        <input className="button" type="button" value="POST" onClick={this.handleClick}/>
+        <input className="button" type="button" value="PUT" onClick={this.handleClick}/>
+        <input className="button" type="button" value="DELETE" onClick={this.handleClick}/>
       </form>
     )
   //     {/* DISPLAY API REQUEST */}
