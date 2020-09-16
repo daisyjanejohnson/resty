@@ -1,7 +1,7 @@
 import React from 'react'
 import{ render, fireEvent, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import App from '../src/App.js'
+import App from '../src/'
 import Results from '../src/components/results/results.js'
 
 it('should render a list of APIs', async () => {
