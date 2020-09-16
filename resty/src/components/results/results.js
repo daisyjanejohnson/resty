@@ -5,19 +5,9 @@ import './results.scss'
 function Results(props) {
   return(
     <div className="results">
-      <h2>Count: {props.count}</h2>
-      {/* <h4>Header: <JSONPretty data={props.headers}/></h4> */}
-     <p>Results:</p>
-      <ul>
-        {props.results.map(result => {
-          return (
-            <li>
-              <JSONPretty data={result}/>
-              
-            </li>
-          )
-        })}
-      </ul>
+      <h3 data-testid="count">Count: {props.count}</h3>
+      <>Headers: <JSONPretty data={props.headers}/></>
+      <div data-testid="count">Results: <JSONPretty data={props.results}/></div> 
     </div>
   )
 }
