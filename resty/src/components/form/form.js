@@ -41,7 +41,7 @@ class Form extends React.Component {
 
   render() {
     return(
-      <form onSubmit={this.handleSubmit}>
+      <form className="App-form" onSubmit={this.handleSubmit}>
         <input type="text" id="urlText" onChange={this.handleChange}/>
         <button>{this.props.prompt}</button>
         <input className="button" type="button" value="GET" onClick={() => this.setState({method: "GET",})}/>
