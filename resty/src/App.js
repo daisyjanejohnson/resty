@@ -7,6 +7,7 @@ import Form from './components/form/form.js';
 import History from './components/history/history.js'
 import Results from './components/results/results.js';
 import Footer from './components/footer/footer.js';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 
 class App extends React.Component{
@@ -79,7 +80,8 @@ updateHistory = (request) => {
   // We are returning these results in our desired format, and rendering them to the app.
   render(){
     return(
-      <>
+      
+      <BrowserRouter>
       <Header />
       <Form prompt="Enter API URL" request={this.state.request} handler={this.fetchResults} />
       <main>
@@ -87,7 +89,7 @@ updateHistory = (request) => {
       <Results loading={this.state.loading} count={this.state.count} results={this.state.results} headers={this.state.headers}/>
       </main>
       <Footer />
-      </>
+      </BrowserRouter>
     )
   }
 }
