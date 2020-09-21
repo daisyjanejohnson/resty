@@ -31,7 +31,8 @@ class Form extends React.Component {
     this.setState({ request: newRequest });
   };
   // handle the Method change
-  methodHandler = (method) => {
+  methodHandler = event => {
+    let method = event.target.value;
     const newRequest = { ...this.state.request, method };
     this.setState({ request: newRequest });
   };
@@ -53,15 +54,17 @@ class Form extends React.Component {
       <form className="App-form" onSubmit={this.submitHandler}>
         <>
           <input type="text" id="urlText" placeholder="http://api.url.here" onChange={this.urlHandler} defaultValue={this.state.request.url} />
-          <button>Get it!</button>
+          <button>Go!</button>
           </>
+          <section className="buttonSection">
           <ul>
-            <li> <button value="GET" className={`method ${this.state.request.method === 'GET'}`} onClick={() => this.methodHandler('GET')}>GET</button></li>
-            <li> <button value="POST" className={`method ${this.state.request.method === 'POST'}`} onClick={() => this.methodHandler('POST')}>POST</button></li>
-            <li> <button value="PUT" className={`method ${this.state.request.method === 'PUT'}`} onClick={() => this.methodHandler('PUT')}>PUT</button></li>
-            <li> <button value="DELETE" className={`method ${this.state.request.method === 'DELETE'}`} onClick={() => this.methodHandler('DELETE')}>DELETE</button></li>
+            <li className="crudButton"> <button value="GET" className={`method ${this.state.request.method === 'GET'}`} onClick={this.methodHandler}>GET</button></li>
+            <li className="crudButton"> <button value="POST" className={`method ${this.state.request.method === 'POST'}`} onClick={this.methodHandler}>POST</button></li>
+            <li className="crudButton"> <button value="PUT" className={`method ${this.state.request.method === 'PUT'}`} onClick={this.methodHandler}>PUT</button></li>
+            <li className="crudButton"> <button value="DELETE" className={`method ${this.state.request.method === 'DELETE'}`} onClick={this.methodHandler}>DELETE</button></li>
           </ul>
           <textarea name="data" onChange={this.bodyHandler} defaultValue={this.state.request.data} /> 
+          </section>
         </form>
     );
   }

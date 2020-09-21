@@ -1,6 +1,10 @@
 .App-footer{
+  position: fixed;
+  width:100%;
+  bottom:0;
   height: 50px;
   margin-top: 100px;
   font-weight: bold;
-
+  background-color: purple;
+  height: 100px;
 }

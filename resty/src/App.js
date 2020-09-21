@@ -6,7 +6,9 @@ import Header from './components/header/header.js';
 import Form from './components/form/form.js';
 import History from './components/history/history.js'
 import Results from './components/results/results.js';
+import HelpPage from './components/helpPage/help-page.js';
 import Footer from './components/footer/footer.js';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 
 class App extends React.Component{
@@ -79,15 +81,36 @@ updateHistory = (request) => {
   // We are returning these results in our desired format, and rendering them to the app.
   render(){
     return(
-      <>
+      <div className="app">
+      <BrowserRouter>
       <Header />
+      <Switch>
+{/* Home Route */}
+      <Route exact path='/'>
       <Form prompt="Enter API URL" request={this.state.request} handler={this.fetchResults} />
-      <main>
       <History handler={this.updateRequest} calls={this.state.history}/>
       <Results loading={this.state.loading} count={this.state.count} results={this.state.results} headers={this.state.headers}/>
-      </main>
+      </Route>
+{/* History Route */}
+      <Route exact path='/history'>
+      <History handler ={this.updateRequest} calls={this.state.history} results={this.state.results} />
+      </Route>
+{/* Help Route */}
+      <Route exact path='/help'>
+      <HelpPage />
+      <ol>
+    <li>Enter in desired API url into the input box</li>
+    <li>Select method</li>
+    <li>Click Go!</li>
+    <li>Visit history in the history tab!</li>
+
+  </ol>
+      </Route>
+
+      </Switch>
       <Footer />
-      </>
+      </BrowserRouter>
+      </div>
     )
   }
 }

@@ -31,6 +31,4 @@ fireEvent.change(urlInput, {event:{target: 'https://swapi.dev/api/people'}})
 fireEvent.click(screen.getByText('Get it!'));
 
 screen.debug();
-
-
 })
