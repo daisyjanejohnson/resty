@@ -1,6 +1,18 @@
 .results{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  overflow:auto;
+  height:300px;
+  width:600px;
+  margin:auto;
+  border: black 3px solid;
 }
+
+img{
+  max-height:15%;
+  max-width: auto;
+}
+
+.loading{
+  border: purple 1px;
+}
+
+

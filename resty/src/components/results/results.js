@@ -20,12 +20,12 @@ const Results = (props) => {
             <img src={loading} alt="Loading" />
           </div>
         ) : (
-          <>
+          <div className="resultsDisplay">
           <h2>Headers </h2>
           <ReactJson src={props.headers} />
           <h2>Results</h2>
           <ReactJson src={props.results} />
-          </>
+          </div>
           )
       }
     </section >

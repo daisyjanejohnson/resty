@@ -6,17 +6,17 @@ import './header.scss';
 
 function Header() {
   return (<header className="App-header">
-    <h1>RESTy</h1>
+    <h1 className="headerText">RESTy</h1>
     <nav>
       <ul>
-        <li>
-          <NavLink to="/">Home</NavLink>
+        <li className="nav">
+          <NavLink  activeClassName="here" to="/">Home</NavLink>
           </li>
-        <li>
-          <NavLink to="/history">History</NavLink>
+        <li className="nav">
+          <NavLink className="nav" activeClassName="here" to="/history">History</NavLink>
           </li>
-          <li>
-            <NavLink to ="/help">Help</NavLink>
+          <li className="nav">
+            <NavLink className="nav"activeClassName="here" to ="/help">Help</NavLink>
           </li>
 
       </ul>
